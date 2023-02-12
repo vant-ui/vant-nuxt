@@ -1,0 +1,56 @@
+{
+  "name": "@vant/nuxt",
+  "version": "1.0.0",
+  "description": "Vant module for Nuxt",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "packageManager": "pnpm@7.22.0",
+  "keywords": [
+    "vant",
+    "nuxt"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vant-ui/vant-nuxt.git"
+  },
+  "bugs": "https://github.com/vant-ui/vant-nuxt/issues",
+  "scripts": {
+    "build": "npm run dev:prepare && nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:start": "node playground/.output/server/index.mjs",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "lint": "eslint . --fix --ext .ts,.vue,.js",
+    "lint:test": "eslint . --ext .ts,.vue,.js --max-warnings 0"
+  },
+  "peerDependencies": {
+    "vant": ">=4"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.2.0",
+    "magic-string": "^0.29.0",
+    "unplugin": "^1.0.1"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "^3.2.0",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@types/node": "^18.13.0",
+    "eslint": "^8.34.0",
+    "nuxt": "^3.2.0",
+    "typescript": "^4.9.5",
+    "vant": "^4.0.10",
+    "vue": "^3.2.47"
+  }
+}
