@@ -32,7 +32,8 @@
     "dev:start": "node playground/.output/server/index.mjs",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint . --fix --ext .ts,.vue,.js",
-    "lint:test": "eslint . --ext .ts,.vue,.js --max-warnings 0"
+    "lint:test": "eslint . --ext .ts,.vue,.js --max-warnings 0",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "vant": ">=4"
@@ -52,5 +53,9 @@
     "typescript": "^4.9.5",
     "vant": "^4.0.10",
     "vue": "^3.2.47"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
