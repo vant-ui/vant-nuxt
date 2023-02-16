@@ -1,6 +1,10 @@
-# Vant Nuxt
+<p align="center">
+  <img alt="logo" src="https://fastly.jsdelivr.net/npm/@vant/assets/logo.png" width="120" height="120" style="margin-bottom: 10px;">
+</p>
 
-> Vant module for Nuxt
+<h1 align="center">Vant Nuxt</h1>
+
+<p align="center"><b>Vant module for Nuxt</b></p>
 
 ## Features
 
@@ -32,7 +36,7 @@ export default defineNuxtConfig({
 </template>
 ```
 
-Reference [Nuxt doc](https://nuxt.com/docs/guide/directory-structure/components) and [playground](./playground/app.vue) use.
+Reference [Nuxt documentation](https://nuxt.com/docs/guide/directory-structure/components) and [playground](./playground/app.vue) use.
 
 ## Options
 
