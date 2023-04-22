@@ -4,10 +4,11 @@ import { hyphenate, toArray } from '../utils'
 import type { Options } from '../types'
 
 export function resolveComponents (config: Options) {
-  const { components } = config
+  const { components, excludeExports } = config
 
   components.forEach((item) => {
     const [name, alias, from] = toArray(item)
+    if (excludeExports.includes(name)) { return }
     const filePath =
       !from || from === libraryName
         ? `${libraryName}/es/${hyphenate(name)}/${name}`

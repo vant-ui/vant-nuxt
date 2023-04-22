@@ -22,6 +22,12 @@ export interface Options extends TransformOptions {
    */
   lazyload: boolean | { lazyComponent?: boolean; lazyImage?: boolean }
   /**
+   * Exclude exports from Vant that are not component content.
+   *
+   * @default ['Lazyload', 'Locale']
+   */
+  excludeExports: string[]
+  /**
    * If there are components that are not imported automatically from Vant, you need to add the component here.
    */
   components: PresetImport[]
