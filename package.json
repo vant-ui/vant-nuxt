@@ -39,19 +39,19 @@
     "vant": ">=4"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.2.0",
+    "@nuxt/kit": "^3.4.2",
     "magic-string": "^0.29.0",
-    "unplugin": "^1.0.1"
+    "unplugin": "^1.3.1"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.2.0",
+    "@nuxt/schema": "^3.4.2",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@types/node": "^18.13.0",
-    "eslint": "^8.34.0",
-    "nuxt": "^3.2.0",
+    "@types/node": "^18.15.13",
+    "eslint": "^8.39.0",
+    "nuxt": "^3.4.2",
     "typescript": "^4.9.5",
-    "vant": "^4.0.10",
+    "vant": "^4.2.0",
     "vue": "^3.2.47"
   },
   "publishConfig": {

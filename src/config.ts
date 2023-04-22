@@ -32,6 +32,8 @@ const allImports: PresetImport[] = [
   'resetToastDefaultOptions'
 ]
 
+const defaultExcludeExports = ['Lazyload', 'Locale']
+
 const defaultInclude: RegExp[] = [
   /\.vue$/,
   /\.vue\?vue/,
@@ -49,6 +51,7 @@ export const defaults: Options = {
   lazyload: false,
   components: allComponents,
   imports: allImports,
+  excludeExports: defaultExcludeExports,
   include: defaultInclude,
   exclude: defaultExclude
 }

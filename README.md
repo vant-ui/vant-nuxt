@@ -14,7 +14,7 @@
 ## Install
 
 ```shell
-npm i @vant/nuxt -D
+npm i vant @vant/nuxt -D
 ```
 
 ```ts
@@ -48,6 +48,13 @@ Reference [Nuxt documentation](https://nuxt.com/docs/guide/directory-structure/c
 How to load directives and components from lazyload.
 
 eg. `{ lazyComponent: true }`
+
+### excludeExports
+
+- Type: `array`
+- Default: `['Lazyload', 'Locale']`
+
+Exclude exports from Vant that are not component content.
 
 ### components
 
