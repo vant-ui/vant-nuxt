@@ -7,8 +7,9 @@ export function getStyleDir (name: string) {
 }
 
 export function resolveStyles (config: Options, name: string) {
-  const { components } = config
+  const { components, importStyle } = config
 
+  if (importStyle === false) { return undefined }
   if (name in allImportsWithStyle) {
     return getStyleDir(allImportsWithStyle[name])
   }

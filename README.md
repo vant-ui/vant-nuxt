@@ -49,6 +49,13 @@ How to load directives and components from lazyload.
 
 eg. `{ lazyComponent: true }`
 
+### importStyle
+
+- Type: `boolean`
+- Default: `true`
+
+Whether to automatically import styles.
+
 ### excludeExports
 
 - Type: `array`

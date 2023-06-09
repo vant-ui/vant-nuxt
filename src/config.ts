@@ -49,6 +49,7 @@ const defaultExclude: RegExp[] = [
 
 export const defaults: Options = {
   lazyload: false,
+  importStyle: true,
   components: allComponents,
   imports: allImports,
   excludeExports: defaultExcludeExports,
