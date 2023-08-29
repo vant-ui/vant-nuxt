@@ -32,7 +32,7 @@ export default defineNuxtModule<Partial<Options>>({
         transformPlugin.vite({
           include: options.include,
           exclude: options.exclude,
-          sourcemap: nuxt.options.sourcemap[mode],
+          sourcemap: nuxt.options.sourcemap[mode] as boolean,
           transformStyles: name => resolveStyles(options, name)
         })
       )
@@ -47,7 +47,7 @@ export default defineNuxtModule<Partial<Options>>({
           transformPlugin.webpack({
             include: options.include,
             exclude: options.exclude,
-            sourcemap: nuxt.options.sourcemap[mode],
+            sourcemap: nuxt.options.sourcemap[mode] as boolean,
             transformStyles: name => resolveStyles(options, name)
           })
         )

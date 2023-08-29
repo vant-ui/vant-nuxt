@@ -2,6 +2,7 @@
 const showCalendar = ref(false)
 const showPopup = ref(false)
 const showCascader = ref(false)
+const showFloatingPanel = ref(false)
 const showKeyboard = ref(false)
 const input = ref('')
 const date = ref('')
@@ -29,6 +30,9 @@ const imageList = [
 const openPopup = () => {
   showPopup.value = true
 }
+const openFloatingPanel = () => {
+  showFloatingPanel.value = true
+}
 const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`
 const onConfirm = (value: Date) => {
   showCalendar.value = false
@@ -46,10 +50,7 @@ onMounted(() => {
 <template>
   <section>
     <van-sticky>
-      <van-notice-bar
-        left-icon="volume-o"
-        text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。"
-      />
+      <van-notice-bar left-icon="volume-o" text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。" />
     </van-sticky>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>1</van-swipe-item>
@@ -80,6 +81,9 @@ onMounted(() => {
         <LazyVanButton type="success" @click="openPopup">
           lazy button
         </LazyVanButton>
+        <LazyVanButton type="success" @click="openFloatingPanel">
+          lazy button
+        </LazyVanButton>
       </van-col>
       <van-col span="4">
         <van-icon name="chat-o" />
@@ -99,16 +103,8 @@ onMounted(() => {
     </van-steps>
 
     <van-cell-group>
-      <van-cell
-        title="选择单个日期"
-        :value="date"
-        @click="showCalendar = true"
-      />
-      <van-cell
-        title="选择所在地区"
-        :value="cascaderValue"
-        @click="showCascader = true"
-      />
+      <van-cell title="选择单个日期" :value="date" @click="showCalendar = true" />
+      <van-cell title="选择所在地区" :value="cascaderValue" @click="showCascader = true" />
       <van-cell @touchstart.stop="showKeyboard = true">
         弹出默认键盘
       </van-cell>
@@ -139,11 +135,7 @@ onMounted(() => {
 
     <van-calendar v-model:show="showCalendar" @confirm="onConfirm" />
     <van-number-keyboard :show="showKeyboard" @blur="showKeyboard = false" />
-    <van-popup
-      v-model:show="showPopup"
-      :style="{ height: '40%' }"
-      position="bottom"
-    >
+    <van-popup v-model:show="showPopup" :style="{ height: '40%' }" position="bottom">
       <van-field v-model="input" label="文本" placeholder="请输入用户名" />
       <van-password-input />
       <van-radio>单选框</van-radio>
@@ -155,13 +147,18 @@ onMounted(() => {
       <van-uploader />
     </van-popup>
     <van-popup v-model:show="showCascader" round position="bottom">
-      <van-cascader
-        v-model="cascaderValue"
-        title="请选择所在地区"
-        :options="options"
-        @close="showCascader = false"
-      />
+      <van-cascader v-model="cascaderValue" title="请选择所在地区" :options="options" @close="showCascader = false" />
     </van-popup>
+    <van-floating-panel
+      v-model:show="showFloatingPanel"
+      :content-draggable="false"
+      :lock-scroll="true"
+      :anchors="[240, 480, 680]"
+    >
+      <van-cell-group>
+        <van-cell v-for=" (n, i) in 150" :key="i" :title="n" :value="n" />
+      </van-cell-group>
+    </van-floating-panel>
 
     <van-back-top bottom="70" />
     <van-sticky position="bottom">
