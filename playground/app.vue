@@ -50,7 +50,10 @@ onMounted(() => {
 <template>
   <section>
     <van-sticky>
-      <van-notice-bar left-icon="volume-o" text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。" />
+      <van-notice-bar
+        left-icon="volume-o"
+        text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。"
+      />
     </van-sticky>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>1</van-swipe-item>
@@ -82,7 +85,7 @@ onMounted(() => {
           lazy button
         </LazyVanButton>
         <LazyVanButton type="success" @click="openFloatingPanel">
-          lazy button
+          Open Floating Panel
         </LazyVanButton>
       </van-col>
       <van-col span="4">
@@ -103,8 +106,16 @@ onMounted(() => {
     </van-steps>
 
     <van-cell-group>
-      <van-cell title="选择单个日期" :value="date" @click="showCalendar = true" />
-      <van-cell title="选择所在地区" :value="cascaderValue" @click="showCascader = true" />
+      <van-cell
+        title="选择单个日期"
+        :value="date"
+        @click="showCalendar = true"
+      />
+      <van-cell
+        title="选择所在地区"
+        :value="cascaderValue"
+        @click="showCascader = true"
+      />
       <van-cell @touchstart.stop="showKeyboard = true">
         弹出默认键盘
       </van-cell>
@@ -135,7 +146,11 @@ onMounted(() => {
 
     <van-calendar v-model:show="showCalendar" @confirm="onConfirm" />
     <van-number-keyboard :show="showKeyboard" @blur="showKeyboard = false" />
-    <van-popup v-model:show="showPopup" :style="{ height: '40%' }" position="bottom">
+    <van-popup
+      v-model:show="showPopup"
+      :style="{ height: '40%' }"
+      position="bottom"
+    >
       <van-field v-model="input" label="文本" placeholder="请输入用户名" />
       <van-password-input />
       <van-radio>单选框</van-radio>
@@ -147,7 +162,12 @@ onMounted(() => {
       <van-uploader />
     </van-popup>
     <van-popup v-model:show="showCascader" round position="bottom">
-      <van-cascader v-model="cascaderValue" title="请选择所在地区" :options="options" @close="showCascader = false" />
+      <van-cascader
+        v-model="cascaderValue"
+        title="请选择所在地区"
+        :options="options"
+        @close="showCascader = false"
+      />
     </van-popup>
     <van-floating-panel
       v-model:show="showFloatingPanel"
