@@ -26,17 +26,13 @@ export default defineNuxtModule<Partial<Options>>({
 
     nuxt.hook('vite:extendConfig', (config, { isClient }) => {
       const mode = isClient ? 'client' : 'server'
-      const sourcemapValue = nuxt.options.sourcemap[mode]
-      if (typeof sourcemapValue !== 'boolean') {
-        throw new TypeError(`Expected a boolean for sourcemap[${mode}], but received ${typeof sourcemapValue}.`)
-      }
 
       config.plugins = config.plugins || []
       config.plugins.push(
         transformPlugin.vite({
           include: options.include,
           exclude: options.exclude,
-          sourcemap: sourcemapValue,
+          sourcemap: nuxt.options.sourcemap[mode],
           transformStyles: name => resolveStyles(options, name)
         })
       )
@@ -45,17 +41,13 @@ export default defineNuxtModule<Partial<Options>>({
     nuxt.hook('webpack:config', (configs) => {
       configs.forEach((config) => {
         const mode = config.name === 'client' ? 'client' : 'server'
-        const sourcemapValue = nuxt.options.sourcemap[mode]
-        if (typeof sourcemapValue !== 'boolean') {
-          throw new TypeError(`Expected a boolean for sourcemap[${mode}], but received ${typeof sourcemapValue}.`)
-        }
 
         config.plugins = config.plugins || []
         config.plugins.push(
           transformPlugin.webpack({
             include: options.include,
             exclude: options.exclude,
-            sourcemap: sourcemapValue,
+            sourcemap: nuxt.options.sourcemap[mode],
             transformStyles: name => resolveStyles(options, name)
           })
         )
