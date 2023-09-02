@@ -2,6 +2,7 @@
 const showCalendar = ref(false)
 const showPopup = ref(false)
 const showCascader = ref(false)
+const showFloatingPanel = ref(false)
 const showKeyboard = ref(false)
 const input = ref('')
 const date = ref('')
@@ -28,6 +29,9 @@ const imageList = [
 
 const openPopup = () => {
   showPopup.value = true
+}
+const openFloatingPanel = () => {
+  showFloatingPanel.value = true
 }
 const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`
 const onConfirm = (value: Date) => {
@@ -79,6 +83,9 @@ onMounted(() => {
         </VanButton>
         <LazyVanButton type="success" @click="openPopup">
           lazy button
+        </LazyVanButton>
+        <LazyVanButton type="success" @click="openFloatingPanel">
+          Open Floating Panel
         </LazyVanButton>
       </van-col>
       <van-col span="4">
@@ -162,6 +169,16 @@ onMounted(() => {
         @close="showCascader = false"
       />
     </van-popup>
+    <van-floating-panel
+      v-model:show="showFloatingPanel"
+      :content-draggable="false"
+      :lock-scroll="true"
+      :anchors="[240, 480, 680]"
+    >
+      <van-cell-group>
+        <van-cell v-for=" (n, i) in 150" :key="i" :title="n" :value="n" />
+      </van-cell-group>
+    </van-floating-panel>
 
     <van-back-top bottom="70" />
     <van-sticky position="bottom">
