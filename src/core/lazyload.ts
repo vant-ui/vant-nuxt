@@ -8,7 +8,7 @@ export function resolveLazyload (config: Options) {
 
   return {
     filename: `${libraryName}-lazyload.plugin.mjs`,
-    getContents: () => `import { defineNuxtPlugin } from '#app';
+    getContents: () => `import { defineNuxtPlugin } from '#imports';
 import { Lazyload } from 'vant';
 
 export default defineNuxtPlugin(nuxtApp => {
