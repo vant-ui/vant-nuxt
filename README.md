@@ -14,7 +14,7 @@
 ## Install
 
 ```shell
-npm i vant @vant/nuxt -D
+npx nuxi@latest module add vant
 ```
 
 ```ts
