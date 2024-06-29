@@ -1,22 +1,23 @@
-import { addComponent } from '@nuxt/kit'
+import { addComponent, createResolver } from '@nuxt/kit'
 import { libraryName } from '../config'
 import { hyphenate, toArray } from '../utils'
 import type { Options } from '../types'
 
 export function resolveComponents (config: Options) {
   const { components, excludeExports } = config
+  const { resolvePath } = createResolver(import.meta.url)
 
-  components.forEach((item) => {
+  components.forEach(async (item) => {
     const [name, alias, from] = toArray(item)
     if (excludeExports.includes(name)) { return }
     const filePath =
       !from || from === libraryName
-        ? `${libraryName}/es/${hyphenate(name)}/${name}`
+        ? `${libraryName}/es/${hyphenate(name)}/${name}.mjs`
         : from
 
     addComponent({
       name: alias || `Van${name}`,
-      filePath
+      filePath: await resolvePath(filePath)
     })
   })
 }
