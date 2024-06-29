@@ -45,18 +45,17 @@ export const transformPlugin = createUnplugin((options: PluginOptions) => {
       })
 
       if (styles.size) {
-        const imports: string[] = []
+        let imports: string = ''
 
-        for await (const name of styles) {
+        for (const name of styles) {
           const style = transformStyles(name)
           if (style) {
             const path = await resolvePath(style)
-            const importPath = genSideEffectsImport(path)
-            imports.push(importPath)
+            imports += genSideEffectsImport(path)
           }
         }
 
-        s.prepend([...imports, ''].join('\n'))
+        s.prepend(imports)
       }
 
       if (s.hasChanged()) {
