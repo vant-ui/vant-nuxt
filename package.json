@@ -1,6 +1,6 @@
 {
   "name": "@vant/nuxt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Vant module for Nuxt",
   "license": "MIT",
   "type": "module",
