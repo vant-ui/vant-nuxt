@@ -3,7 +3,7 @@ import { hyphenate } from '../utils'
 import type { Options } from '../types'
 
 export function getStyleDir (name: string) {
-  return `${libraryName}/es/${hyphenate(name)}/style/index`
+  return `${libraryName}/es/${hyphenate(name)}/style/index.mjs`
 }
 
 export function resolveStyles (config: Options, name: string) {

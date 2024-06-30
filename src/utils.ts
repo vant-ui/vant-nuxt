@@ -13,7 +13,7 @@ export function toRegExp (arr: string[], flags?: string): RegExp {
 }
 
 export function genSideEffectsImport (value: string): string {
-  return `import '${value}';`
+  return `import '${value}';\n`
 }
 
 export function camelize (value: string): string {

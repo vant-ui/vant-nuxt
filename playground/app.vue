@@ -169,7 +169,7 @@ onMounted(() => {
         @close="showCascader = false"
       />
     </van-popup>
-    <van-floating-panel
+    <!-- <van-floating-panel
       v-model:show="showFloatingPanel"
       :content-draggable="false"
       :lock-scroll="true"
@@ -178,7 +178,7 @@ onMounted(() => {
       <van-cell-group>
         <van-cell v-for=" (n, i) in 150" :key="i" :title="n" :value="n" />
       </van-cell-group>
-    </van-floating-panel>
+    </van-floating-panel> -->
 
     <van-back-top bottom="70" />
     <van-sticky position="bottom">

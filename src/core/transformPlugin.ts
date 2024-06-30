@@ -1,6 +1,7 @@
 import { createUnplugin } from 'unplugin'
 import MagicString from 'magic-string'
 import type { NuxtOptions } from '@nuxt/schema'
+import { createResolver } from '@nuxt/kit'
 import { allImportsWithStyle, libraryName } from '../config'
 import { camelize, genSideEffectsImport, toRegExp } from '../utils'
 import type { TransformOptions } from '../types'
@@ -28,26 +29,33 @@ export const transformPlugin = createUnplugin((options: PluginOptions) => {
         return true
       }
     },
-    transform (code, id) {
-      const imports = new Set<string>()
+    async transform (code, id) {
+      const { resolvePath } = createResolver(import.meta.url)
+      const styles = new Set<string>()
       const s = new MagicString(code)
 
-      const addStyles = (style?: string) => {
-        style && imports.add(genSideEffectsImport(style))
-      }
-
       s.replace(componentsRegExp, (full, lazy, name) => {
-        addStyles(transformStyles(camelize(name)))
+        styles.add(camelize(name))
         return full
       })
 
       s.replace(importsRegExp, (full, name) => {
-        addStyles(transformStyles(name))
+        styles.add(name)
         return full
       })
 
-      if (imports.size) {
-        s.prepend([...imports, ''].join('\n'))
+      if (styles.size) {
+        let imports: string = ''
+
+        for (const name of styles) {
+          const style = transformStyles(name)
+          if (style) {
+            const path = await resolvePath(style)
+            imports += genSideEffectsImport(path)
+          }
+        }
+
+        s.prepend(imports)
       }
 
       if (s.hasChanged()) {
