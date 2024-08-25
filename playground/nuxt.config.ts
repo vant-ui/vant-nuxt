@@ -4,6 +4,7 @@ import Vant from '..'
 export default defineNuxtConfig({
   modules: [Vant],
   vant: {
-    lazyload: true
+    lazyload: true,
+    imports: ['Locale', 'useCurrentLang']
   }
 })
