@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   modules: [Vant],
   vant: {
     lazyload: true,
+    defaultLocale: 'en-US',
     imports: ['Locale', 'useCurrentLang']
   }
 })

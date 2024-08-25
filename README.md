@@ -58,6 +58,12 @@ eg. `{ lazyComponent: true }`
 
 Whether to automatically import styles.
 
+### defaultLocale
+
+- Type: `string`
+
+Replace default locale, you can find locale list [here](https://github.com/youzan/vant/tree/main/packages/vant/src/locale/lang).
+
 ### excludeExports
 
 - Type: `array`
