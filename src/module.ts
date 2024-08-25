@@ -6,6 +6,7 @@ import {
   resolveLazyload,
   resolveOptions,
   resolveStyles,
+  localePlugin,
   transformPlugin
 } from './core/index'
 import type { Options } from './types'
@@ -36,6 +37,13 @@ export default defineNuxtModule<Partial<Options>>({
           transformStyles: name => resolveStyles(options, name)
         })
       )
+
+      if (options.defaultLocale && options.defaultLocale !== 'zh-CN') {
+        config.plugins.push(localePlugin.vite({
+          sourcemap: nuxt.options.sourcemap[mode],
+          locale: options.defaultLocale
+        }))
+      }
     })
 
     nuxt.hook('webpack:config', (configs) => {
@@ -51,6 +59,13 @@ export default defineNuxtModule<Partial<Options>>({
             transformStyles: name => resolveStyles(options, name)
           })
         )
+
+        if (options.defaultLocale && options.defaultLocale !== 'zh-CN') {
+          config.plugins.push(localePlugin.webpack({
+            sourcemap: nuxt.options.sourcemap[mode],
+            locale: options.defaultLocale
+          }))
+        }
       })
     })
   }

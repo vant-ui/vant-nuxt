@@ -28,6 +28,13 @@ export interface Options extends TransformOptions {
    */
   importStyle: boolean
   /**
+   * Replace default locale, you can find locale list [here](https://github.com/youzan/vant/tree/main/packages/vant/src/locale/lang).
+   *
+   * @default 'zh-CN'
+   * @example 'en-US'
+   */
+  defaultLocale?: string
+  /**
    * Exclude exports from Vant that are not component content.
    *
    * @default ['Lazyload', 'Locale']
