@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import enUS from 'vant/es/locale/lang/en-US'
+import zhCN from 'vant/es/locale/lang/zh-CN'
+
+const lang = useCurrentLang()
+
 const showCalendar = ref(false)
 const showPopup = ref(false)
 const showCascader = ref(false)
@@ -40,6 +45,13 @@ const onConfirm = (value: Date) => {
 }
 const showImage = (index: number) => {
   showImagePreview({ images: imageList, startPosition: index })
+}
+const changeLocale = () => {
+  if (lang.value === 'en-US') {
+    Locale.use('zh-CN', zhCN)
+  } else {
+    Locale.use('en-US', enUS)
+  }
 }
 
 onMounted(() => {
@@ -87,6 +99,9 @@ onMounted(() => {
         <LazyVanButton type="success" @click="openFloatingPanel">
           Open Floating Panel
         </LazyVanButton>
+        <van-button type="warning" @click="changeLocale">
+          i18n
+        </van-button>
       </van-col>
       <van-col span="4">
         <van-icon name="chat-o" />
@@ -120,6 +135,7 @@ onMounted(() => {
         弹出默认键盘
       </van-cell>
     </van-cell-group>
+    <van-pagination :total-items="24" :items-per-page="5" />
 
     <van-collapse v-model="activeNames">
       <van-collapse-item title="标题1" name="1">
