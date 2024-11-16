@@ -9,17 +9,16 @@ import {
   localePlugin,
   transformPlugin
 } from './core/index'
-import type { Options } from './types'
+import type { ModuleOptions } from './types'
+export type { ModuleOptions } from './types'
 
-export default defineNuxtModule<Partial<Options>>({
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: libraryName,
     configKey: libraryName
   },
   defaults,
-  setup (_options, nuxt) {
-    const options = _options as Options
-
+  setup (options, nuxt) {
     resolveOptions()
     nuxt.options.imports.autoImport !== false && resolveImports(options)
     nuxt.options.components !== false && resolveComponents(options)

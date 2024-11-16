@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import Vant from '..'
+import Vant from '../src/module'
 
 export default defineNuxtConfig({
   modules: [Vant],

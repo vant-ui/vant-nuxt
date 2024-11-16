@@ -1,9 +1,9 @@
 import { addComponent, createResolver } from '@nuxt/kit'
 import { libraryName } from '../config'
 import { hyphenate, toArray } from '../utils'
-import type { Options } from '../types'
+import type { ModuleOptions } from '../types'
 
-export function resolveComponents (config: Options) {
+export function resolveComponents (config: ModuleOptions) {
   const { components, excludeExports } = config
   const { resolvePath } = createResolver(import.meta.url)
 

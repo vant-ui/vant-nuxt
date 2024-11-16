@@ -1,8 +1,8 @@
 import { libraryName } from '../config'
 import { isObject } from '../utils'
-import type { Options } from '../types'
+import type { ModuleOptions } from '../types'
 
-export function resolveLazyload (config: Options) {
+export function resolveLazyload (config: ModuleOptions) {
   const { lazyload } = config
   const options = isObject(lazyload) ? `, ${JSON.stringify(lazyload)}` : ''
 
