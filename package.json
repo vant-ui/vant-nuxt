@@ -38,20 +38,20 @@
     "vant": ">=4"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.12.2",
+    "@nuxt/kit": "^3.14.159",
     "magic-string": "^0.29.0",
-    "unplugin": "^1.10.2"
+    "unplugin": "^1.16.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.5",
-    "@nuxt/schema": "^3.12.2",
+    "@nuxt/schema": "^3.14.159",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@types/node": "^18.19.39",
-    "eslint": "^8.57.0",
-    "nuxt": "^3.12.2",
-    "typescript": "^5.5.2",
-    "vant": "^4.9.1",
-    "vue": "^3.4.31"
+    "@types/node": "^22.9.0",
+    "eslint": "^8.57.1",
+    "nuxt": "^3.14.159",
+    "typescript": "^5.6.3",
+    "vant": "^4.9.8",
+    "vue": "^3.5.12"
   },
   "publishConfig": {
     "access": "public",

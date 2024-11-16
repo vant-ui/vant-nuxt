@@ -1,12 +1,12 @@
 import { allImportsWithStyle, libraryName } from '../config'
 import { hyphenate } from '../utils'
-import type { Options } from '../types'
+import type { ModuleOptions } from '../types'
 
 export function getStyleDir (name: string) {
   return `${libraryName}/es/${hyphenate(name)}/style/index.mjs`
 }
 
-export function resolveStyles (config: Options, name: string) {
+export function resolveStyles (config: ModuleOptions, name: string) {
   const { components, importStyle } = config
 
   if (importStyle === false) { return undefined }

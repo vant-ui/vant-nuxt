@@ -7,7 +7,7 @@ export interface TransformOptions {
   exclude: RegExp[]
 }
 
-export interface Options extends TransformOptions {
+export interface ModuleOptions extends TransformOptions {
   /**
    * Whether to automatically load lazyload directives and components.
    *
@@ -48,13 +48,4 @@ export interface Options extends TransformOptions {
    * If you wish to add automatically import content from Vant, you can add it here.
    */
   imports: PresetImport[]
-}
-
-declare module '@nuxt/schema' {
-  interface NuxtConfig {
-    vant?: Partial<Options>
-  }
-  interface NuxtOptions {
-    vant?: Partial<Options>
-  }
 }

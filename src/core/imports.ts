@@ -1,8 +1,8 @@
 import { addImportsSources } from '@nuxt/kit'
 import { libraryName } from '../config'
-import type { Options } from '../types'
+import type { ModuleOptions } from '../types'
 
-export function resolveImports (config: Options) {
+export function resolveImports (config: ModuleOptions) {
   const { imports } = config
 
   addImportsSources({

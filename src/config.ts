@@ -1,5 +1,5 @@
 import AllComponents from 'vant'
-import type { Options, PresetImport } from './types'
+import type { ModuleOptions, PresetImport } from './types'
 
 export const libraryName = 'vant'
 
@@ -47,7 +47,7 @@ const defaultExclude: RegExp[] = [
   /[\\/]\.nuxt[\\/]/
 ]
 
-export const defaults: Options = {
+export const defaults: ModuleOptions = {
   lazyload: false,
   importStyle: true,
   components: allComponents,
