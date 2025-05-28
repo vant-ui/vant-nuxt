@@ -1,5 +1,11 @@
+import { createResolver } from '@nuxt/kit'
 import type { NuxtConfigLayer } from '@nuxt/schema'
 import { libraryName } from './config'
+
+export function resolvePath (path: string): Promise<string> {
+  const { resolvePath } = createResolver(import.meta.url)
+  return resolvePath(path)
+}
 
 export function getLayersDir (layers: NuxtConfigLayer[]) {
   const list = []
