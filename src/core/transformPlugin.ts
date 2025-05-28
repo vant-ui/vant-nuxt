@@ -7,6 +7,7 @@ import { camelize, genSideEffectsImport, toRegExp } from '../utils'
 import type { TransformOptions } from '../types'
 
 interface PluginOptions extends TransformOptions {
+  layers: string[]
   sourcemap?: NuxtOptions['sourcemap']['client']
   transformStyles: (name: string) => undefined | string
 }
@@ -16,12 +17,15 @@ const componentsRegExp =
 const importsRegExp = toRegExp(Object.keys(allImportsWithStyle), 'g')
 
 export const transformPlugin = createUnplugin((options: PluginOptions) => {
-  const { include, exclude, transformStyles } = options
+  const { layers, include, exclude, transformStyles } = options
 
   return {
     name: `${libraryName}:transform`,
     enforce: 'post',
     transformInclude (id) {
+      if (layers.some(layer => id.startsWith(layer))) {
+        return true
+      }
       if (exclude.some(pattern => id.match(pattern))) {
         return false
       }
