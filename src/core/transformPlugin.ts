@@ -1,9 +1,8 @@
 import { createUnplugin } from 'unplugin'
 import MagicString from 'magic-string'
 import type { NuxtOptions } from '@nuxt/schema'
-import { createResolver } from '@nuxt/kit'
 import { allImportsWithStyle, libraryName } from '../config'
-import { camelize, genSideEffectsImport, toRegExp } from '../utils'
+import { camelize, genSideEffectsImport, resolvePath, toRegExp } from '../utils'
 import type { TransformOptions } from '../types'
 
 interface PluginOptions extends TransformOptions {
@@ -34,7 +33,6 @@ export const transformPlugin = createUnplugin((options: PluginOptions) => {
       }
     },
     async transform (code, id) {
-      const { resolvePath } = createResolver(import.meta.url)
       const styles = new Set<string>()
       const s = new MagicString(code)
 

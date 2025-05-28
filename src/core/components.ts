@@ -1,11 +1,10 @@
-import { addComponent, createResolver } from '@nuxt/kit'
+import { addComponent } from '@nuxt/kit'
 import { libraryName } from '../config'
-import { hyphenate, toArray } from '../utils'
+import { hyphenate, resolvePath, toArray } from '../utils'
 import type { ModuleOptions } from '../types'
 
 export function resolveComponents (config: ModuleOptions) {
   const { components, excludeExports } = config
-  const { resolvePath } = createResolver(import.meta.url)
 
   components.forEach(async (item) => {
     const [name, alias, from] = toArray(item)
